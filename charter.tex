@@ -118,17 +118,17 @@ Se adjunta a esta acta la planificación inicial.
 
 
 \begin{consigna}{black} 
-El objetivo de este proyecto sera contar con modelos de visión por computadora que permitan a los investigadores del área de biotecnología del INTA detectar y contar flores y frutos del durazno. Hoy en día esta es un tarea que se realiza de manera manual, la cual requiere una basta cantidad de tiempo. Este software permitirá a los investigadores no gasten tiempo en esta tareas, sino que simplemente podrán tomarle fotos a los arboles y el software se encargara de los demás.
+El objetivo de este proyecto sera contar con modelos de visión por computadora que permitan a los investigadores del área de biotecnología del INTA detectar y contar flores y frutos del durazno. Hoy en día esta es un tarea que se realiza de manera manual, la cual requiere una basta cantidad de tiempo. Este software permitirá a los investigadores no gasten tiempo en esta tarea, sino que simplemente podrán tomarle fotos a los arboles y el software se encargara de los demás.
 
-La principal valoración del cliente, es que el entregable cumpla con el objetivo principal, o sea hacer el recuento de estos elementos. Por el momento no esta interesado particularmente en ningún tipo de interfaz gráfica. Tambien se aclaro que existen posibilidades de usar el centro de computación del INTA en caso de ser requerido, pero inicialmente, para este proyecto, no se cree necesario.
+La principal valoración del cliente, es que el entregable cumpla con el objetivo principal, o sea hacer el recuento de estos elementos. Por el momento no esta interesado particularmente en ningún tipo de interfaz gráfica. También se aclaro que existen posibilidades de usar el centro de computación del INTA en caso de ser requerido, pero inicialmente, para este proyecto, no se cree necesario.
 
 Cabe aclarar que este proyecto es parte del programa de vinculación con empresas del posgrado.
 
-La gran mayoría de este tipo de proyectos pone el énfasis en detectar los elementos, pero no en contarlos , y si bien existen proyectos de detección de frutos y de flores, no se han encontrado proyectos que vinculen ambos y ademas hagan el recuento de los mismos.
+La gran mayoría de este tipo de proyectos pone el énfasis en detectar los elementos, pero no en contarlos , y si bien existen diferentes proyectos de detección de frutos, como también de flores, no se han encontrado proyectos que vinculen ambos y ademas hagan el recuento de los mismos.
 
-El presente proyecto no pretende hacer grandes innovaciones en el campo, ya existen varios algoritmos que permiten hacer detección de objectos, como son los modelos de YOLO, RCNN, SSD, Resnet, etc. Todos esto modelos ya vienen con un pre-entrenamiento que permite que para adaptarlo a el caso de uso de los durazneros no se necesite un dataset de imágenes tan amplio, ni tampoco tanto poder de computo. A esta técnica se la conoce como \textit{transfer learning}.
+El presente proyecto no pretende hacer grandes innovaciones en el campo, ya existen varios algoritmos que permiten hacer detección de objectos, como son los modelos de YOLO, RCNN, SSD, Resnet, etc. Todos esto modelos ya vienen con un pre-entrenamiento que permite que para adaptarlo a el caso de uso de los durazneros no se necesite un dataset de imágenes tan amplio, ni tampoco tanto poder de computo. A la técnica de re-entrenar una red usando ya un previo entrenamiento se la conoce como \textit{transfer learning}.
 
-Nuestro proceso contara con varias etapas, iniciando por la el etiquetado de las imágenes de nuestro dataset, continuara por hacer \textit{data augmentation}, un proceso por el cual se le aplican diferentes filtros a las imágenes para agrandar el dataset. Una vez realizado este proceso,  entrenaremos los diferentes modelos con este dataset extendido y se probara la eficiencia de cada uno. 
+Nuestro proceso contara con varias etapas, iniciando por la del etiquetado de las imágenes de nuestro dataset, continuara por hacer \textit{data augmentation}, un proceso por el cual se le aplican diferentes filtros a las imágenes para agrandar el dataset. Una vez realizado este proceso,  entrenaremos los diferentes modelos con este dataset extendido y se probara la eficiencia de cada uno. 
 
 En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. En este podemos encontrar que una vez realizado el entrenamiento de los diferentes modelo deberemos realzar el \textit{fine tunning}, un proceso por el cual editamos los hiper-parámetros del entrenamiento de las redes para que con nuestro escenario nos de los mejores resultados.
 
@@ -168,7 +168,7 @@ Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hli
 \label{sec:proposito}
 
 \begin{consigna}{black}
-El propósito de este proyecto es crear un programa que permita a los miembros del INTA detectar y contar tanto frutos como flores del duraznero en diferentes imagenes.
+El propósito de este proyecto es crear un programa que permita a los miembros del INTA detectar y contar tanto frutos como flores del duraznero en diferentes imágenes.
 \end{consigna}
 
 \section{4. Alcance del proyecto}
@@ -192,7 +192,7 @@ Para el desarrollo del presente proyecto se supone que:
 	\item El tiempo estimado es suficiente para realización del proyecto.
 	\item Al momento de finalizar la cursada de las materias del posgrado se tendra el conocimiento suficiente para poder realizar el proyecto.
 	\item Se puede acceder a el dataset para realizar el proyecto.
-	\item La detección de los elementos no deberá ser precisa al 100, se establecerá un umbral de aceptación.
+	\item La detección de los elementos no deberá ser precisa al 100\%, se establecerá un umbral de aceptación.
 \end{itemize}
 \end{consigna}
 
