@@ -17,7 +17,7 @@
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Federico Lucas Paolino} 
+\autor{Lic. Federico Lucas Paolino} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
 \director{Nombre del Director}
@@ -41,7 +41,7 @@
  
 \fechaINICIO{28 de febrero de 2023}		%Fecha de inicio de la cursada de GdP \fechaInicioName
 \fechaFINALPlan{24 de abril de 2023} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{agosto de 2022}	%Fecha de defensa pública del trabajo final
+\fechaFINALTrabajo{octubre de 2023}	%Fecha de defensa pública del trabajo final
 
 
 \begin{document}
@@ -93,7 +93,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en \textcolor{red}{la implementación de un prototipo de un sistema de control de temperatura de un calefón}, y tendrá un presupuesto preliminar estimado de \textcolor{red}{600} h de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la implementación de un detector y contador de frutos y flores de imagenes del duraznero , y tendrá un presupuesto preliminar estimado de 600 h de trabajo y \$1.850.000, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -117,50 +117,35 @@ Se adjunta a esta acta la planificación inicial.
 \label{sec:descripcion}
 
 
-\begin{consigna}{red} % El bloque "consigna" se usa para poner texto en rojo y dar una pequeña ayuda sobre cómo completar la sección. En cada entrega parcial deben eliminar los comandos begin y end del bloque consigna de las secciones que hayan completado.
+\begin{consigna}{black} 
+El objetivo de este proyecto sera contar con modelos de visión por computadora que permitan a los investigadores del área de biotecnología del INTA detectar y contar flores y frutos del durazno. Hoy en día esta es un tarea que se realiza de manera manual, la cual requiere una basta cantidad de tiempo. Este software permitirá a los investigadores no gasten tiempo en esta tareas, sino que simplemente podrán tomarle fotos a los arboles y el software se encargara de los demás.
 
-El objetivo es que el lector en una o dos páginas entienda de qué trata el proyecto y cuáles son sus desafíos, cuál es la motivación para realizarlo y su importancia.
+La principal valoración del cliente, es que el entregable cumpla con el objetivo principal, o sea hacer el recuento de estos elementos. Por el momento no esta interesado particularmente en ningún tipo de interfaz gráfica. Tambien se aclaro que existen posibilidades de usar el centro de computación del INTA en caso de ser requerido, pero inicialmente, para este proyecto, no se cree necesario.
 
-Se debe introducir el contexto del proyecto, el estado del arte en la temática, describir la propuesta de valor, cúal es el problema que atiende y cuál es la solución que se propone. Se debe dar una descripción funcional de la solución que incluya un diagrama en bloques.
+Cabe aclarar que este proyecto es parte del programa de vinculación con empresas del posgrado.
 
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
+La gran mayoría de este tipo de proyectos pone el énfasis en detectar los elementos, pero no en contarlos , y si bien existen proyectos de detección de frutos y de flores, no se han encontrado proyectos que vinculen ambos y ademas hagan el recuento de los mismos.
 
-\begin{itemize}
-	\item ¿Cuál es el contexto del proyecto, es un emprendimiento personal, un proyecto para una empresa, es parte del programa de vinculación con empresas del posgrado?
-	\item ¿Existen o aplican condiciones especiales al proyecto, financiamiento de algún programa público o privado, acuerdos de confidencialidad, acuerdos sobre la propiedad intelectual de los entregables u otros?
-	\item ¿Cómo se compara la solución propuesta con el estado del arte en el campo de aplicación? ¿En qué aspectos destaca?
-	\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-	\item ¿En qué estado del ciclo de vida está la solución que se propone?
-	\item ¿Cuáles son las características del cliente (el adoptante de los entregables del proyecto) qué valora, qué necesita?
-	\item ¿Por dónde pasa la innovación?
-\end{itemize}
+El presente proyecto no pretende hacer grandes innovaciones en el campo, ya existen varios algoritmos que permiten hacer detección de objectos, como son los modelos de YOLO, RCNN, SSD, Resnet, etc. Todos esto modelos ya vienen con un pre-entrenamiento que permite que para adaptarlo a el caso de uso de los durazneros no se necesite un dataset de imágenes tan amplio, ni tampoco tanto poder de computo. A esta técnica se la conoce como \textit{transfer learning}.
 
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema} y descripción funcional de la solución propuesta.
+Nuestro proceso contara con varias etapas, iniciando por la el etiquetado de las imágenes de nuestro dataset, continuara por hacer \textit{data augmentation}, un proceso por el cual se le aplican diferentes filtros a las imágenes para agrandar el dataset. Una vez realizado este proceso,  entrenaremos los diferentes modelos con este dataset extendido y se probara la eficiencia de cada uno. 
 
-Las figuras se deben mencionar en el texto ANTES de que aparezcan con una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''.  La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
+En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. En este podemos encontrar que una vez realizado el entrenamiento de los diferentes modelo deberemos realzar el \textit{fine tunning}, un proceso por el cual editamos los hiper-parámetros del entrenamiento de las redes para que con nuestro escenario nos de los mejores resultados.
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.5\textwidth]{./Figuras/diagBloques.png}
+\includegraphics[width=0.80\textwidth]{./Figuras/Diagrama entrenamiento.png}
 \caption{Diagrama en bloques del sistema}
 \label{fig:diagBloques}
 \end{figure}
 
 \vspace{25px}
 
-El tamaño de la tipografía en TODAS las figuras debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama, preferentemente en la gama de colores pastel.
+
 \end{consigna}
 
 \section{2. Identificación y análisis de los interesados}
 \label{sec:interesados}
-
-\begin{consigna}{red} % este comando se debe borrar para la entrega, junto con la contraparte \end{consigna}{red} 
- 
-\textbf{Nota importante:} borrar esto y todas las consignas en color rojo antes de entregar este documento). Esto se hace eliminando el par de comandos que forman el bloque consigna, \verb!\begin{consigna}{red}! y \verb!\end{consigna}{red}! del código. 
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos. Si se considera que una persona cumple dos o más roles, entonces solo dejarla en el rol más importante. 
-
-Por ejemplo, si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente. Si una persona es el Responsable, no debe ser colocado también como miembro del equipo.
 
 
 \begin{table}[ht]
@@ -170,59 +155,29 @@ Por ejemplo, si una persona es Cliente pero también colabora u orienta, dejarla
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
+Auspiciante   &                   & INTA             	&        	\\ \hline
+Cliente       & \clientename      &\empclientename	& Investigador en Biotecnología        	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
 \end{tabularx}
 \end{table}
-
-El Director suele ser uno de los Orientadores.
-
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Es deseable listar a continuación las principales características de cada interesado.
- 
-Por ejemplo:
-\begin{itemize}
-	\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-	\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
-	\item Orientador: María Gómez va a poder ayudar mucho con la definición de los requerimientos.
-\end{itemize}
-
-\end{consigna} % este comando se debe borrar para la entrega, junto con la contraparte \begin{consigna}{red}
 
 
 
 \section{3. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red}
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-Se recomienda que sea solo un párrafo que empiece diciendo ``El propósito de este proyecto es...''.
+\begin{consigna}{black}
+El propósito de este proyecto es crear un programa que permita a los miembros del INTA detectar y contar tanto frutos como flores del duraznero en diferentes imagenes.
 \end{consigna}
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
+\begin{consigna}{black}
+El presente proyecto incluye la entrega del código fuente para el modelo de visión por computadora y toda la documentación necesaria para poder correr(y probablemente modificar) este mismo.
 
-Se refiere al trabajo a hacer para entregar el producto o resultado especificado. 
-
-Explicitar todo lo quede comprendido dentro del alcance del proyecto.
-
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
-
+El proyecto no incluye soporte visual(Interfaz de usuario) ni software donde se implemente el código. La ejecución del modelo queda a cargo del usuario final.
 \end{consigna}
 
 
