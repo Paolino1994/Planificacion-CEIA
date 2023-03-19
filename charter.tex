@@ -7,7 +7,7 @@
 
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Visión por computadora para la identificación flores y frutos de duraznero } 
+\titulo{Visión por computadora para la identificación de flores y frutos de duraznero} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 %\posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -71,7 +71,7 @@
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
 1      & Se completa hasta el punto 5 inclusive                 & 14 de marzo de 2023 \\ \hline
-%2      & Se completa hasta el punto 7 inclusive
+2      & Se completa hasta el punto 9 inclusive                 & 21 de marzo de 2023 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & dd/mm/aaaa \\ \hline
@@ -93,7 +93,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la implementación de un detector y contador de frutos y flores de imagenes del duraznero , y tendrá un presupuesto preliminar estimado de 600 h de trabajo y \$1.850.000, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', el cual consistirá en la implementación de un detector y contador de frutos y flores de imágenes del duraznero, y tendrá un presupuesto preliminar estimado de 600 h de trabajo y \$1.850.000, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública en \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -118,19 +118,32 @@ Se adjunta a esta acta la planificación inicial.
 
 
 \begin{consigna}{black} 
-El objetivo de este proyecto sera contar con modelos de visión por computadora que permitan a los investigadores del área de biotecnología del INTA detectar y contar flores y frutos del durazno. Hoy en día esta es un tarea que se realiza de manera manual, la cual requiere una basta cantidad de tiempo. Este software permitirá a los investigadores no gasten tiempo en esta tarea, sino que simplemente podrán tomarle fotos a los arboles y el software se encargara de los demás.
+Contar de forma manual la cantidad de flores o frutos que posee un árbol a campo
+resulta una tarea laboriosa. No obstante, conocer estos datos tiene diversas
+aplicaciones que por su dificultad no están siendo abordadas. En el caso del departamento de biotecnología del INTA, los algoritmos a desarrollar se usaran como una herramienta interna del programa de mejoramiento. 
 
-La principal valoración del cliente, es que el entregable cumpla con el objetivo principal, o sea hacer el recuento de estos elementos. Por el momento no esta interesado particularmente en ningún tipo de interfaz gráfica. También se aclaro que existen posibilidades de usar el centro de computación del INTA en caso de ser requerido, pero inicialmente, para este proyecto, no se cree necesario.
+Automatizar la tarea de contar flores y frutos les permitirá obtener un gran volumen de datos para vincular con diferentes características, lo que se conoce como fenotipo, de interés como:
+\begin{enumerate}
+	\item Floribundidad: Relacionado con la tolerancia a heladas y producción.
+	\item Fecha de floración plena: definir este estado fenológico de forma precisa
+	\item Porcentaje de cuajado: Relacionado con la producción
+	\item Potencial de raleo: capacidad de genotipo a soportar mayor o menor raleo.
+	\item Rendimiento
+\end{enumerate}
 
-Cabe aclarar que este proyecto es parte del programa de vinculación con empresas del posgrado.
+Actualmente no existen soluciones que permitan al cliente resolver el problema, tan solo existen papers e investigaciones de distintas universidades con temas similares. Esa es la razón por la cual el interesado decidió utilizar el programa de vinculación del laboratorio.
 
-La gran mayoría de este tipo de proyectos pone el énfasis en detectar los elementos, pero no en contarlos , y si bien existen diferentes proyectos de detección de frutos, como también de flores, no se han encontrado proyectos que vinculen ambos y ademas hagan el recuento de los mismos.
+El objetivo de este proyecto consiste en contar con modelos de visión por computadora que permitan a los investigadores del área de biotecnología del INTA detectar y contar flores y frutos del duraznero. Actualmente es un tarea que se realiza de manera manual y requiere una gran cantidad de tiempo. El software resultante del proyecto permitirá a los investigadores ahorrar tiempo, simplemente deberán tomar fotografías de los arboles y el software se encargara de la detección y el conteo de elementos.
 
-El presente proyecto no pretende hacer grandes innovaciones en el campo, ya existen varios algoritmos que permiten hacer detección de objectos, como son los modelos de YOLO, RCNN, SSD, Resnet, etc. Todos esto modelos ya vienen con un pre-entrenamiento que permite que para adaptarlo a el caso de uso de los durazneros no se necesite un dataset de imágenes tan amplio, ni tampoco tanto poder de computo. A la técnica de re-entrenar una red usando ya un previo entrenamiento se la conoce como \textit{transfer learning}.
+La principal valoración del cliente es que el entregable cumpla con el objetivo principal, que es hacer el recuento de estos elementos. No es requerimiento del cliente contar con una interfaz de usuario gráfica.
 
-Nuestro proceso contara con varias etapas, iniciando por la del etiquetado de las imágenes de nuestro dataset, continuara por hacer \textit{data augmentation}, un proceso por el cual se le aplican diferentes filtros a las imágenes para agrandar el dataset. Una vez realizado este proceso,  entrenaremos los diferentes modelos con este dataset extendido y se probara la eficiencia de cada uno. 
+La gran mayoría de este tipo de proyectos pone el énfasis en detectar los elementos, pero no en contarlos, y si bien existen diferentes proyectos de detección de frutos, como también de flores, no se han encontrado proyectos que vinculen ambos y ademas hagan el recuento de los mismos.
 
-En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. En este podemos encontrar que una vez realizado el entrenamiento de los diferentes modelo deberemos realzar el \textit{fine tunning}, un proceso por el cual editamos los hiper-parámetros del entrenamiento de las redes para que con nuestro escenario nos de los mejores resultados.
+La detección de objetos es una tarea importante en el campo de la visión por computadora y existen varios algoritmos que permiten hacerla, como los modelos de YOLO, RCNN, SSD, Resnet, etc. Todos estos modelos ya vienen con un pre-entrenamiento que permite adaptarlos al caso de uso del conteo de flores y frutos de los durazneros sin necesidad de un dataset de imágenes tan amplio ni tanto poder de cómputo. A la técnica de re-entrenar una red usando ya un previo entrenamiento se la conoce como \textit{transfer learning}.
+
+El proceso resultante del presente trabajo contará con varias etapas, iniciando por la del etiquetado de las imágenes del dataset, continuara por hacer la aumentación de datos (\textit{data augmentation}), un proceso por el cual se le aplican diferentes filtros a las imágenes para agrandar el dataset. Una vez realizado este proceso,  se entrenarán los diferentes modelos con el dataset extendido y se probará la eficiencia de cada uno. 
+
+En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. En este se puede observar que una vez realizado el entrenamiento de los diferentes modelos deberemos realzar el ajuste fino (\textit{fine tunning}), un proceso por el cual editamos los hiper-parámetros del entrenamiento de las redes para que brinde los mejores resultados con el escenario actual.
 
 \begin{figure}[htpb]
 \centering 
@@ -168,16 +181,16 @@ Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hli
 \label{sec:proposito}
 
 \begin{consigna}{black}
-El propósito de este proyecto es crear un programa que permita a los miembros del INTA detectar y contar tanto frutos como flores del duraznero en diferentes imágenes.
+El propósito de este proyecto es crear un programa que permita a los miembros del área de biotecnología del INTA detectar y contar tanto frutos como flores del duraznero a partir de diferentes imágenes.
 \end{consigna}
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
 
 \begin{consigna}{black}
-El presente proyecto incluye la entrega del código fuente para el modelo de visión por computadora y toda la documentación necesaria para poder correr(y probablemente modificar) este mismo.
+El presente proyecto incluye la entrega del código fuente para el modelo de visión por computadora y toda la documentación necesaria para poder ejecutar este mismo.
 
-El proyecto no incluye soporte visual(Interfaz de usuario) ni software donde se implemente el código. La ejecución del modelo queda a cargo del usuario final.
+El proyecto no incluye soporte visual (interfaz de usuario) ni software donde se implemente el código. La ejecución del modelo queda a cargo del usuario final.
 \end{consigna}
 
 
@@ -190,112 +203,156 @@ Para el desarrollo del presente proyecto se supone que:
 \begin{itemize}
 	\item Se tiene la disponibilidad de al menos 600 horas para la realización del proyecto.
 	\item El tiempo estimado es suficiente para realización del proyecto.
-	\item Al momento de finalizar la cursada de las materias del posgrado se tendra el conocimiento suficiente para poder realizar el proyecto.
-	\item Se puede acceder a el dataset para realizar el proyecto.
+	\item Al momento de finalizar la cursada de las materias del posgrado se tendrá el conocimiento suficiente para poder realizar el proyecto.
+	\item Se puede acceder al dataset para realizar el proyecto.
+	\item Las imágenes del dataset cuentan con una resolución mínima de 640x640.
+	\item Se tienen mas de 500 imágenes de cada categoría (frutos y flores).
 	\item La detección de los elementos no deberá ser precisa al 100\%, se establecerá un umbral de aceptación.
+	\item Se tiene una GPU con al menos 8 gigabytes de VRAM en la cual entrenar los modelos. 
 \end{itemize}
 \end{consigna}
 
 \section{6. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red}
+\begin{consigna}{black}
 Los requerimientos deben numerarse y de ser posible estar agruparlos por afinidad, por ejemplo:
 
 \begin{enumerate}
 	\item Requerimientos funcionales
 		\begin{enumerate}
-			\item El sistema debe...
-			\item Tal componente debe...
-			\item El usuario debe poder...
+			\item El software debe identificar los frutos y flores del duraznero con una precision superior al umbral definido.
+			\item El software debe contar por separado frutos y flores.
 		\end{enumerate}
 	\item Requerimientos de documentación
 		\begin{enumerate}
-			\item Requerimiento 1
-			\item Requerimiento 2 (prioridad menor)
+			\item El software sera entregado con un manual de uso.
+			\item Al finalizar el desarrollo se entregara un informe de precision.
+			\item El código del software debe estar desarrollado de forma prolija y siguiendo las practicas sugeridas por los docentes de la carrera.
+			
 		\end{enumerate}
-	\item Requerimiento de testing...
-	\item Requerimientos de la interfaz...
-	\item Requerimientos interoperabilidad...
-	\item etc...
+	\item Requerimientos de testing
+		\begin{enumerate}
+			\item Una vez finalizado el proyecto se realizaran pruebas con nuevas fotos tomadas por los investigadores.
+			\item Los resultados entregados por el software deberán ser aprobados por los investigadores.
+		\end{enumerate}
+		
 \end{enumerate}
-
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos y si hay requerimientos opcionales. 
-
-No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-	\item Ser breve y conciso (nadie lee cosas largas). 
-	\item Ser específico: no dejar lugar a confusiones.
-	\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
 
 \end{consigna}
 
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
+\begin{consigna}{black}
+Primero y principal, se especifica la forma para puntuar cada historia. Los criterios
+son:
+\begin{enumerate}
+	\item Dificultad: La cantidad de trabajo a realizar
+	\item Complejidad: El nivel de sofisticación del trabajo
+	\item Riesgo: El nivel de riesgo que involucra realizar la tarea
+\end{enumerate}
 
-\begin{consigna}{red}
-Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
+Los números disponibles a la hora de puntuar cada categoría son aquellos definidos en la sucesión de Fibonacci, yendo de 1 a 8. Cada una de las historia tendrá su puntaje por categoría y después para calcular el total de los puntos se sumaran las 3 categorías.
 
-El formato propuesto es: "como [rol] quiero [tal cosa] para [tal otra cosa]."
+Una vez que realicemos la suma, la secuencia se puede extender hasta el 34.
 
-Se debe indicar explícitamente el criterio para calcular los \textit{story points} de cada historia
+
+Historia 1:
+Como investigador quiero poder detectar las flores y frutos del duraznero para poder ingresar la información en el sistema de fenotipos
+\begin{enumerate}
+	\item Dificultad: 8, la tarea incluye etiquetado, el aumento de los datos y la corrida de los modelos.
+	\item Complejidad: 5, Se necesitan conocimientos avanzados en algoritmia y visión por computadora.
+	\item Riesgo: 8, esta tarea es clave de todo el desarrollo, sin esta no se puede continuar con las demás.
+	\item Total: 34
+\end{enumerate}
+
+
+Historia 2 (depende de historia 1):
+Como investigador quiero poder contar las flores y frutos del duraznero una vez detectado para poder ingresar la información en el sistema de fenotipos
+\begin{enumerate}
+	\item Dificultad: 2, es algo que ya se ha realizado en bastas oportunidades.
+	\item Complejidad: 3, se necesita conocimiento de algoritmia intermedios.
+	\item Riesgo: 3, si bien la tarea es importante, la realización es corta y se puede modificar fácilmente.
+	\item Total: 8
+\end{enumerate}
+
+Historia 3 (depende de historia 1):
+Como investigador quiero poder saber cual es la confianza que se tiene de la detección de los elementos para poder definir si los datos son lo suficientemente aceptables para el sistema de fenotipos
+\begin{enumerate}
+	\item Dificultad: 2, es algo que ya se ha realizado en bastas oportunidades.
+	\item Complejidad: 3, se necesita conocimiento de algoritmia intermedios.
+	\item Riesgo: 1, la precision ya debería haber sido establecida en las pruebas finales.
+	\item Total: 8
+\end{enumerate}
+
 \end{consigna}
 
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
+\begin{consigna}{black}
 
-Los entregables del proyecto son (ejemplo):
+Los entregables del proyecto son:
 
 \begin{itemize}
-	\item Manual de uso
-	\item Diagrama de circuitos esquemáticos
-	\item Código fuente del firmware
-	\item Diagrama de instalación
-	\item Informe final
-	\item etc...
+	\item Manual de uso.
+	\item Código fuente.
+	\item Informe final.
+	\item Informe de precision.
+	\item Dataset aumentado y etiquetado.
 \end{itemize}
 
 \end{consigna}
 
 \section{9. Desglose del trabajo en tareas}
 \label{sec:wbs}
-
-\begin{consigna}{red}
-El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
-
+\begin{consigna}{black}
 \begin{enumerate}
-\item Grupo de tareas 1
+\item Planificación (62 hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas h)
+	\item Definir alcance (6 hs)
+	\item Definir director (8 hs)
+	\item Redactar planificación (48 hs)
 	\end{enumerate}
-\item Grupo de tareas 2
+\item Etiquetado y aumento de datos (80 hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
+	\item Etiquetado (40 hs)
+	\item Investigación de técnicas de aumentación de datos (8 hs)
+	\item Aplicación de data aumentación de datos (32 hs)
 	\end{enumerate}
-\item Grupo de tareas 3
+\item Aprendizaje transferido (296 hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
-	\item Tarea 4 (tantas h)
-	\item Tarea 5 (tantas h)
+	\item Investigación de modelos de visión por computadora (24 hs)
+	\item Implementación y entrenamiento del primer modelo (20 hs)
+	\item Ajuste fino del primer modelo (40 hs)
+	\item Implementación y entrenamiento del segundo modelo (20 hs)
+	\item Ajuste fino del segundo modelo (40 hs)
+	\item Implementación y entrenamiento del tercer modelo (20 hs)
+	\item Ajuste fino del tercer modelo (40 hs)
+	\item Implementación y entrenamiento del cuarto modelo (20 hs)
+	\item Ajuste fino del cuarto modelo (40 hs)
+	\item Crear software final (32 hs)
+	\end{enumerate}
+\item Testing (48 hs)
+	\begin{enumerate}
+	\item Evaluar y decidir mejor modelo junto con usuario final (12 hs)
+	\item Pruebas de comportamiento del software final (8 hs)
+	\item Pruebas con nuevas imágenes del cliente (8 hs)
+	\item Pruebas de velocidad de inferencia(6 hs)
+	\item Pruebas de precision de inferencia(6 hs)
+	\item Pruebas en vivo con el cliente (8 hs)
+	\end{enumerate}
+\item Documentación (118 hs)
+	\begin{enumerate}
+	\item Redactar memoria técnica (96 hs)
+	\item Redactar manual de usuario (6 hs)
+	\item Redactar informe de precision (6 hs)
+	\item Redactar informe de avance (10 hs)
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (tantas h)
+Cantidad total de horas: 604 hs.
 
-Se recomienda que no haya ninguna tarea que lleve más de 40 h. 
 
 \end{consigna}
 
